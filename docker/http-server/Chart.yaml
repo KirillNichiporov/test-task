@@ -1,0 +1,8 @@
+apiVersion: v2
+name: http-server-chart
+version: 1.0.0
+appVersion: "1.0.0"
+
+maintainers:
+  - name: Kirill Nichiporov
+    email: kirill.nichiporov.01@mail.ru

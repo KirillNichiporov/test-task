@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.all.metadataName }}-deployment
+  labels:
+    app: {{ .Values.all.metadataName }}
+spec:
+  replicas: {{ .Values.deployment.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.all.metadataName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.all.metadataName }}
+    spec:
+      containers:
+      - name: {{ .Values.all.metadataName }}-image
+        image: {{ .Values.deployment.image }}
+        args: ["$(MESSAGE)"]
+        ports:
+        - containerPort: 80
+        env:
+        - name: MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Values.all.metadataName }}-configmap
+              key: message
+
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 10
+          failureThreshold: 10
+          periodSeconds: 10
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5

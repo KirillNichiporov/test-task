@@ -1,0 +1,14 @@
+all:
+  metadataName: http-server
+
+deployment:
+  image: kirill123433353463/test:v4
+
+  replicaCount: 3
+
+configmap:
+  message: "Hallo Welt!"
+
+
+service:
+  NodePort: 30080
