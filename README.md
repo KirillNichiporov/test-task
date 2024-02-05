@@ -1,3 +1,4 @@
 # test-task
 
-![image](https://github.com/KirillNichiporov/test-task/assets/110092772/590f1292-ee61-4001-a08e-469488cd770a)
+
+![image](https://github.com/KirillNichiporov/test-task/assets/110092772/9f337036-50df-428d-8bc4-c61b6d0a4f1f)
